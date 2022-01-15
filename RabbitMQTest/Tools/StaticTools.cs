@@ -4,6 +4,19 @@ namespace RabbitMQTest.Tools;
 
 public static class StaticTools
 {
+    public static DateTime GetDateTime(this RlcDiffHeader header)
+    {
+        var dEven = header.DEven;
+        var hEven = header.HEven;
+        var year = int.Parse(dEven.Substring(0, 4));
+        var month = int.Parse(dEven.Substring(4, 2));
+        var day = int.Parse(dEven.Substring(6, 2));
+        var hour = int.Parse(hEven.Substring(0, 2));
+        var minute = int.Parse(hEven.Substring(2, 2));
+        var second = int.Parse(hEven.Substring(4, 2));
+        return new DateTime(year, month, day, hour, minute, second);
+    }
+
     public static double ConvertToDouble(this Amount amount)
     {
         var ift = amount.IFt.Trim();
@@ -14,20 +27,14 @@ public static class StaticTools
     private static double ConvertToDouble(string ift, string qmt)
     {
         if (!int.TryParse(ift, out var number)) return ConvertCharToDouble(ift, qmt);
-        if (number > 0)
-        {
-            qmt = qmt.Insert(qmt.Length - number, ".");
-        }
+        if (number > 0) qmt = qmt.Insert(qmt.Length - number, ".");
 
         return double.Parse(qmt);
     }
 
     private static double ConvertCharToDouble(string ift, string qmt)
     {
-        if (string.IsNullOrWhiteSpace(ift))
-        {
-            return double.Parse(qmt);
-        }
+        if (string.IsNullOrWhiteSpace(ift)) return double.Parse(qmt);
 
         return ift.ToLower() switch
         {
