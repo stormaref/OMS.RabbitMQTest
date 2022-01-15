@@ -4,6 +4,16 @@ namespace RabbitMQTest.Tools;
 
 public static class StaticTools
 {
+    public static long ToLong(this Amount amount)
+    {
+        if (int.TryParse(amount.IFt.Trim(), out var number) && number != 0)
+        {
+            throw new Exception();
+        }
+
+        return long.Parse(amount.QMt.Trim());
+    }
+
     public static DateTime GetDateTime(this RlcDiffHeader header)
     {
         var dEven = header.DEven;

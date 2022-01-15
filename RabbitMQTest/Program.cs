@@ -1,3 +1,4 @@
+using System.Reflection;
 using MassTransit;
 using RabbitMQTest.Consumers;
 
@@ -10,11 +11,15 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
 builder.Services.AddMassTransit(x =>
 {
-    x.AddConsumer<Message01Consumer>();
+    // x.AddConsumer<Message01Consumer>();
+    // x.AddConsumer<Message5EConsumer>();
+    x.AddConsumer<Message5IConsumer>();
 
-    x.UsingRabbitMq((context, cfg) =>
+    x.AddBus(provider => Bus.Factory.CreateUsingRabbitMq(cfg =>
     {
         cfg.Host("192.168.72.210", 5672, "/", hostConfigurator =>
         {
@@ -22,14 +27,30 @@ builder.Services.AddMassTransit(x =>
             hostConfigurator.Password("z");
         });
 
-        cfg.ReceiveEndpoint("arcRLC0001", e =>
+        // cfg.ReceiveEndpoint("arcRLC0001", e =>
+        // {
+        //     e.ClearMessageDeserializers();
+        //     e.UseRawJsonSerializer();
+        //     e.Consumer<Message01Consumer>();
+        //     e.PrefetchCount = 1;
+        // });
+
+        // cfg.ReceiveEndpoint("arcRLC005E", e =>
+        // {
+        //     e.ClearMessageDeserializers();
+        //     e.UseRawJsonSerializer();
+        //     e.Consumer<Message5EConsumer>(provider);
+        //     e.PrefetchCount = 1;
+        // });
+
+        cfg.ReceiveEndpoint("arcRLC005I", e =>
         {
             e.ClearMessageDeserializers();
             e.UseRawJsonSerializer();
-            e.Consumer<Message01Consumer>();
+            e.Consumer<Message5IConsumer>(provider);
             e.PrefetchCount = 1;
         });
-    });
+    }));
 });
 
 builder.Services.AddMassTransitHostedService();
