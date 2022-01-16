@@ -1,4 +1,4 @@
-namespace RabbitMQTest.Models;
+namespace RabbitMQTest.Models.Messages;
 
 public class Message01 : MessageBase<Message01Body>
 {

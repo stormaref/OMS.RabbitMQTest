@@ -2,6 +2,7 @@ using AutoMapper;
 using MassTransit;
 using RabbitMQTest.Models;
 using RabbitMQTest.Models.Entities;
+using RabbitMQTest.Models.Messages;
 
 namespace RabbitMQTest.Consumers;
 
@@ -17,6 +18,5 @@ public class Message5IConsumer : IConsumer<Message5I>
     public async Task Consume(ConsumeContext<Message5I> context)
     {
         var marketActivity = _mapper.Map<MarketActivity>(context.Message);
-        int a = 2;
     }
 }

@@ -8,11 +8,17 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="MassTransit.AspNetCore" Version="7.3.1-develop.340" />
-        <PackageReference Include="MassTransit.RabbitMQ" Version="7.3.1-develop.340" />
+        <PackageReference Include="MassTransit.AspNetCore" Version="7.3.0" />
+        <PackageReference Include="MassTransit.RabbitMQ" Version="7.3.0" />
         <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
         <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="OMS.RabbitMQInfrastructure">
+        <HintPath>..\..\OMS.RabbitMQInfrastructure\OMS.RabbitMQInfrastructure\bin\Release\netstandard2.1\OMS.RabbitMQInfrastructure.dll</HintPath>
+      </Reference>
     </ItemGroup>
 
 </Project>

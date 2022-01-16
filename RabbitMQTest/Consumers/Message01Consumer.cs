@@ -1,5 +1,5 @@
 using MassTransit;
-using RabbitMQTest.Models;
+using RabbitMQTest.Models.Messages;
 using RabbitMQTest.Tools;
 
 namespace RabbitMQTest.Consumers;

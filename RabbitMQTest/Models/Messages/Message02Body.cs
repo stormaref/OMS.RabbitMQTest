@@ -1,8 +1,8 @@
 using Newtonsoft.Json;
 
-namespace RabbitMQTest.Models;
+namespace RabbitMQTest.Models.Messages;
 
-public class Message01Body
+public class Message02Body
 {
     [JsonProperty("$type")] public string Type { get; set; }
 
@@ -24,11 +24,19 @@ public class Message01Body
 
     [JsonProperty("YCpteOmVt")] public string YCpteOmVt { get; set; }
 
+    [JsonProperty("PPhSeaCotJ")] public Amount PPhSeaCotJ { get; set; }
+
+    [JsonProperty("PPbSeaCotJ")] public Amount PPbSeaCotJ { get; set; }
+
+    [JsonProperty("IAnuTran")] public string IAnuTran { get; set; }
+
     [JsonProperty("Filler2")] public string Filler2 { get; set; }
 
     [JsonProperty("ITranYApl")] public string ITranYApl { get; set; }
 
     [JsonProperty("IFinTran")] public string IFinTran { get; set; }
+
+    [JsonProperty("YOmOrgTran")] public string YOmOrgTran { get; set; }
 
     [JsonProperty("YOmAc")] public string YOmAc { get; set; }
 
@@ -46,7 +54,7 @@ public class Message01Body
 
     [JsonProperty("DHTran")] public string DHTran { get; set; }
 
-    [JsonProperty("YOmOrgTran")] public string YOmOrgTran { get; set; }
-
     [JsonProperty("XQVarPJDrPRF")] public Amount XQVarPJDrPRF { get; set; }
+
+    [JsonProperty("Filler5")] public string Filler5 { get; set; }
 }

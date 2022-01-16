@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace RabbitMQTest.Models;
+namespace RabbitMQTest.Models.Messages;
 
 public class AMeLim
 {

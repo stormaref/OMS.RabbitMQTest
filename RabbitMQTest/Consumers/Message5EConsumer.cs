@@ -2,6 +2,7 @@ using AutoMapper;
 using MassTransit;
 using RabbitMQTest.Models;
 using RabbitMQTest.Models.Entities;
+using RabbitMQTest.Models.Messages;
 
 namespace RabbitMQTest.Consumers;
 
